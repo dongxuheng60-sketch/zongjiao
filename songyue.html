@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>嵩岳寺塔 | 华夏营造可视化平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F8F5EE',
+            zi: '#9D65C9',
+            jin: '#D4AF37',
+            mo: '#2D2A24',
+          },
+          fontFamily: {
+            song: ['"Source Han Serif SC"', '"Noto Serif SC"', 'serif'],
+            hei: ['"Source Han Sans SC"', '"Noto Sans SC"', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto { content-visibility: auto; }
+      .bg-paper {
+        background-color: #F8F5EE;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232D2A24' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+      }
+    }
+    /* ===== 暗色模式 ===== */
+    html.dark body { background-color: #1a1814 !important; color: #e8e0d0 !important; }
+    html.dark .bg-paper { background-color: #1a1814 !important; background-image: none; }
+    html.dark .bg-white, html.dark [class*="bg-white"] { background-color: #252220 !important; }
+    html.dark .bg-paper\/90, html.dark .nav-blur { background-color: rgba(26,24,20,0.9) !important; }
+    html.dark .border-zi\/15, html.dark .border-jin\/20, html.dark .border-zi\/20, html.dark .border-jin\/30 { border-color: #3a3530 !important; }
+    html.dark .text-mo\/80, html.dark .text-mo\/75, html.dark .text-mo\/70, html.dark .text-mo\/65 { color: #c8bca0 !important; }
+    html.dark .text-mo\/50, html.dark .text-mo\/60, html.dark .text-mo\/40 { color: #9a8a70 !important; }
+    html.dark .text-mo\/35, html.dark .text-mo\/30 { color: #7a6a50 !important; }
+    html.dark .bg-mo\/5, html.dark .bg-mo\/3 { background-color: #2a2820 !important; }
+    html.dark .bg-gradient-to-b from-zi\/8 { background-image: linear-gradient(to bottom, rgba(157,101,201,0.05), #1a1814) !important; }
+    html.dark .text-zi { color: #b080e0 !important; }
+    html.dark .text-jin { color: #e8c050 !important; }
+    html.dark footer { background-color: #0e0c0a !important; }
+    /* ===== 入场动画 ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .anim-fade-up   { animation: fadeUp  0.6s ease-out both; }
+    .anim-fade-in   { animation: fadeIn  0.5s ease-out both; }
+    .anim-delay-1   { animation-delay: 0.1s; }
+    .anim-delay-2   { animation-delay: 0.2s; }
+    .anim-delay-3   { animation-delay: 0.3s; }
+    .anim-delay-4   { animation-delay: 0.4s; }
+    .anim-delay-5   { animation-delay: 0.5s; }
+    /* ===== 目录导航 ===== */
+    .toc-item { transition: all 0.25s ease; }
+    .toc-item:hover { transform: translateY(-1px); }
+    /* ===== 图片占位区域虚线边框动画 ===== */
+    .image-placeholder {
+      border: 3px dashed #D4AF37;
+      animation: dashMove 3s linear infinite;
+    }
+    @keyframes dashMove {
+      0% { border-color: rgba(212,175,55,0.4); }
+      50% { border-color: rgba(212,175,55,1.0); }
+      100% { border-color: rgba(212,175,55,0.4); }
+    }
+    .section-alt {
+      background: linear-gradient(135deg, rgba(157,101,201,0.04) 0%, rgba(212,175,55,0.04) 100%);
+    }
+    .quote-mark {
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(212,175,55,0.3);
+      font-family: serif;
+    }
+  </style>
+</head>
+<body class="bg-paper font-hei text-mo min-h-screen">
+
+  <!-- 导航栏 -->
+  <nav class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b-2 border-jin/20">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="font-song text-2xl md:text-3xl font-bold text-zi">
+        <a href="zongjiao.html" class="hover:text-jin transition-colors">华夏营造</a>
+      </div>
+      <div class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-zi transition-colors">首页</a>
+        <a href="lizhi.html" class="hover:text-zi transition-colors">礼制建筑</a>
+        <a href="juzhu.html" class="hover:text-zi transition-colors">居住建筑</a>
+        <a href="yuanlin.html" class="hover:text-zi transition-colors">园林建筑</a>
+        <a href="fangyu.html" class="hover:text-zi transition-colors">防御建筑</a>
+        <a href="zongjiao.html" class="text-jin font-bold">宗教建筑</a>
+        <a href="baoshi.html" class="hover:text-zi transition-colors">报时建筑</a>
+      </div>
+      <!-- 暗色模式切换 -->
+      <button id="darkToggle" onclick="document.documentElement.classList.toggle('dark')"
+        class="ml-3 w-9 h-9 rounded-full border border-jin/30 bg-jin/10 hover:bg-jin/20 flex items-center justify-center text-jin transition-all shadow-sm" title="切换暗色模式">
+        <i class="fa fa-moon-o"></i>
+      </button>
+      <button class="md:hidden text-zi text-xl ml-2"><i class="fa fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- 目录导航锚点 -->
+  <div class="bg-white/70 backdrop-blur-sm border-b border-zi/10 sticky top-[57px] z-40">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-center gap-1 md:gap-2 py-2 overflow-x-auto text-sm">
+        <a href="#建造背景"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-zi hover:bg-zi/10 whitespace-nowrap font-medium">建造背景</a>
+        <span class="text-jin/40">·</span>
+        <a href="#建筑结构"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-zi hover:bg-zi/10 whitespace-nowrap font-medium">建筑结构</a>
+        <span class="text-jin/40">·</span>
+        <a href="#技术解析"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-zi hover:bg-zi/10 whitespace-nowrap font-medium">技术解析</a>
+        <span class="text-jin/40">·</span>
+        <a href="#历史价值"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-zi hover:bg-zi/10 whitespace-nowrap font-medium">历史价值</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 面包屑导航 -->
+  <div class="bg-zi/5 border-b border-zi/10">
+    <div class="container mx-auto px-4 py-3 text-sm text-mo/60">
+      <a href="zongjiao.html" class="hover:text-zi transition-colors">宗教建筑</a>
+      <span class="mx-2 text-jin">›</span>
+      <span class="text-jin font-bold">嵩岳寺塔</span>
+    </div>
+  </div>
+
+  <!-- 页面标题区 -->
+  <section class="bg-gradient-to-b from-zi/8 to-paper py-12">
+    <div class="container mx-auto px-4 text-center">
+      <div class="inline-flex gap-3 mb-4">
+        <span class="px-4 py-1 bg-jin/10 text-jin rounded-full text-sm font-bold border border-jin/30">北魏 · 523年</span>
+        <span class="px-4 py-1 bg-zi/10 text-zi rounded-full text-sm font-bold border border-zi/30">十五层密檐</span>
+        <span class="px-4 py-1 bg-mo/10 text-mo rounded-full text-sm border border-mo/20">十二边形</span>
+        <span class="px-4 py-1 bg-mo/10 text-mo rounded-full text-sm border border-mo/20">37.05米</span>
+      </div>
+      <h1 class="font-song text-4xl md:text-5xl font-bold text-zi mb-4">嵩岳寺塔</h1>
+      <p class="text-mo/60 text-lg max-w-2xl mx-auto">中国现存最古老的砖塔 · 唯一十二边形密檐式砖塔 · 北魏砖石建筑巅峰之作</p>
+      <div class="w-16 h-1 bg-jin mx-auto mt-6 rounded-full"></div>
+    </div>
+  </section>
+
+  <!-- 视觉核心区：左图 + 右3D -->
+  <section class="container mx-auto px-4 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+      <!-- 左：实景大图（占4/5宽度） -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-2xl border-2 border-jin/30 shadow-xl overflow-hidden h-full min-h-[400px] lg:min-h-full">
+          <img src="SnowShot_2026-04-09_23-14-29.png" alt="嵩岳寺塔实景" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+      <!-- 右：3D交互模型（占3/5宽度） -->
+      <div class="lg:col-span-3">
+        <div class="bg-white rounded-2xl border-2 border-zi/20 shadow-xl overflow-hidden h-full">
+          <div class="bg-gradient-to-r from-zi/80 to-jin/80 px-5 py-3 flex items-center justify-between">
+            <h3 class="font-song text-lg font-bold text-white">三维交互模型</h3>
+            <span class="text-white/70 text-xs flex items-center gap-1">
+              <i class="fa fa-mouse-pointer"></i> 拖拽旋转 · 滚轮缩放
+            </span>
+          </div>
+          <div class="relative w-full" style="height:500px;">
+            <iframe
+              title="嵩岳寺塔 Pagode do Templo Songyue"
+              frameborder="0"
+              allowfullscreen
+              mozallowfullscreen="true"
+              webkitallowfullscreen="true"
+              allow="autoplay; fullscreen; xr-spatial-tracking"
+              xr-spatial-tracking
+              execution-while-out-of-viewport
+              execution-while-not-rendered
+              web-share
+              src="https://sketchfab.com/models/e25091bf76e1482ab67d9746a6db9cdd/embed?autostart=1&ui_theme=dark&ui_infos=0&ui_watermark=0&ui_controls=1&ui_stop=0"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+            ></iframe>
+          </div>
+          <!-- 模型下方信息面板 -->
+          <div class="bg-gradient-to-b from-mo/5 to-zi/5 border-t border-zi/10">
+
+            <!-- 核心参数数据栏 -->
+            <div class="grid grid-cols-4 divide-x divide-zi/15">
+              <div class="flex flex-col items-center justify-center py-4 px-2 hover:bg-jin/5 transition-colors group">
+                <span class="text-2xl font-bold font-song text-jin group-hover:scale-110 transition-transform inline-block">523</span>
+                <span class="text-mo/40 text-xs mt-0.5 tracking-wider">年</span>
+                <p class="text-mo/50 text-xs mt-1">北魏正光四年</p>
+              </div>
+              <div class="flex flex-col items-center justify-center py-4 px-2 hover:bg-jin/5 transition-colors group">
+                <span class="text-2xl font-bold font-song text-jin group-hover:scale-110 transition-transform inline-block">15</span>
+                <span class="text-mo/40 text-xs mt-0.5 tracking-wider">层</span>
+                <p class="text-mo/50 text-xs mt-1">密檐叠出</p>
+              </div>
+              <div class="flex flex-col items-center justify-center py-4 px-2 hover:bg-jin/5 transition-colors group">
+                <span class="text-2xl font-bold font-song text-jin group-hover:scale-110 transition-transform inline-block">37.05</span>
+                <span class="text-mo/40 text-xs mt-0.5 tracking-wider">米</span>
+                <p class="text-mo/50 text-xs mt-1">塔体高度</p>
+              </div>
+              <div class="flex flex-col items-center justify-center py-4 px-2 hover:bg-jin/5 transition-colors group">
+                <span class="text-2xl font-bold font-song text-jin group-hover:scale-110 transition-transform inline-block">12</span>
+                <span class="text-mo/40 text-xs mt-0.5 tracking-wider">边形</span>
+                <p class="text-mo/50 text-xs mt-1">独特平面形制</p>
+              </div>
+            </div>
+
+            <!-- 塔层高度可视化 -->
+            <div class="px-5 pt-4 pb-3 border-t border-zi/10">
+              <p class="text-mo/50 text-xs font-bold mb-3 flex items-center gap-1">
+                <i class="fa fa-bar-chart text-jin"></i>
+                塔层高度分布示意（底层→顶层递减）
+              </p>
+              <div class="flex items-end gap-0.5 h-14">
+                <!-- 15根柱子，高度依次递减，模拟密檐塔的外轮廓 -->
+                <div style="height:100%" class="flex-1 bg-gradient-to-t from-zi/70 to-zi/30 rounded-t-sm"></div>
+                <div style="height:93%" class="flex-1 bg-gradient-to-t from-zi/70 to-zi/30 rounded-t-sm"></div>
+                <div style="height:86%" class="flex-1 bg-gradient-to-t from-zi/70 to-zi/30 rounded-t-sm"></div>
+                <div style="height:80%" class="flex-1 bg-gradient-to-t from-zi/70 to-zi/30 rounded-t-sm"></div>
+                <div style="height:74%" class="flex-1 bg-gradient-to-t from-zi/60 to-zi/20 rounded-t-sm"></div>
+                <div style="height:68%" class="flex-1 bg-gradient-to-t from-zi/60 to-zi/20 rounded-t-sm"></div>
+                <div style="height:62%" class="flex-1 bg-gradient-to-t from-zi/60 to-zi/20 rounded-t-sm"></div>
+                <div style="height:56%" class="flex-1 bg-gradient-to-t from-jin/60 to-jin/20 rounded-t-sm"></div>
+                <div style="height:51%" class="flex-1 bg-gradient-to-t from-jin/60 to-jin/20 rounded-t-sm"></div>
+                <div style="height:46%" class="flex-1 bg-gradient-to-t from-jin/60 to-jin/20 rounded-t-sm"></div>
+                <div style="height:41%" class="flex-1 bg-gradient-to-t from-jin/60 to-jin/20 rounded-t-sm"></div>
+                <div style="height:36%" class="flex-1 bg-gradient-to-t from-jin/50 to-jin/15 rounded-t-sm"></div>
+                <div style="height:30%" class="flex-1 bg-gradient-to-t from-jin/50 to-jin/15 rounded-t-sm"></div>
+                <div style="height:24%" class="flex-1 bg-gradient-to-t from-jin/50 to-jin/15 rounded-t-sm"></div>
+                <div style="height:18%" class="flex-1 bg-gradient-to-t from-jin/50 to-jin/15 rounded-t-sm"></div>
+              </div>
+              <div class="flex justify-between text-mo/35 text-xs mt-1">
+                <span>第1层（基部）</span>
+                <span>第8层（中部）</span>
+                <span>第15层（顶部）</span>
+              </div>
+            </div>
+
+            <!-- 历史大事记横向时间轴 -->
+            <div class="px-5 py-4 border-t border-zi/10">
+              <p class="text-mo/50 text-xs font-bold mb-3 flex items-center gap-1">
+                <i class="fa fa-clock-o text-jin"></i>
+                千年传承 · 历史大事记
+              </p>
+              <div class="relative">
+                <!-- 轴线 -->
+                <div class="absolute top-3 left-0 right-0 h-0.5 bg-gradient-to-r from-jin/20 via-zi/50 to-jin/20 rounded-full"></div>
+                <div class="flex justify-between relative">
+                  <!-- 节点1 -->
+                  <div class="flex flex-col items-center gap-1 w-14">
+                    <div class="w-2.5 h-2.5 rounded-full bg-jin border-2 border-white shadow z-10 relative"></div>
+                    <span class="text-jin text-xs font-bold font-song">523年</span>
+                    <span class="text-mo/50 text-xs text-center leading-tight">北魏建塔</span>
+                  </div>
+                  <!-- 节点2 -->
+                  <div class="flex flex-col items-center gap-1 w-14">
+                    <div class="w-2.5 h-2.5 rounded-full bg-zi border-2 border-white shadow z-10 relative"></div>
+                    <span class="text-zi text-xs font-bold font-song">602年</span>
+                    <span class="text-mo/50 text-xs text-center leading-tight">隋改寺名</span>
+                  </div>
+                  <!-- 节点3 -->
+                  <div class="flex flex-col items-center gap-1 w-14">
+                    <div class="w-2.5 h-2.5 rounded-full bg-jin border-2 border-white shadow z-10 relative"></div>
+                    <span class="text-jin text-xs font-bold font-song">唐宋间</span>
+                    <span class="text-mo/50 text-xs text-center leading-tight">多次修缮</span>
+                  </div>
+                  <!-- 节点4 -->
+                  <div class="flex flex-col items-center gap-1 w-14">
+                    <div class="w-2.5 h-2.5 rounded-full bg-zi border-2 border-white shadow z-10 relative"></div>
+                    <span class="text-zi text-xs font-bold font-song">1961年</span>
+                    <span class="text-mo/50 text-xs text-center leading-tight">国家重保</span>
+                  </div>
+                  <!-- 节点5 -->
+                  <div class="flex flex-col items-center gap-1 w-14">
+                    <div class="w-2.5 h-2.5 rounded-full bg-jin border-2 border-white shadow z-10 relative"></div>
+                    <span class="text-jin text-xs font-bold font-song">2010年</span>
+                    <span class="text-mo/50 text-xs text-center leading-tight">世界遗产</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 底部引言 -->
+            <div class="px-5 py-3 border-t border-zi/10 bg-gradient-to-r from-zi/5 to-jin/5">
+              <p class="text-center text-mo/60 text-sm font-song italic leading-relaxed">
+                <span class="text-jin text-xl align-middle leading-none">「</span>
+                &thinsp;雁塔风霜古，龙池岁月深&thinsp;
+                <span class="text-jin text-xl align-middle leading-none">」</span>
+              </p>
+              <p class="text-center text-mo/35 text-xs mt-1 tracking-widest">— 嵩山古塔留题 · 距今逾1500年</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 详细介绍区 -->
+  <section class="container mx-auto px-4 py-10">
+
+    <!-- 建造背景 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="建造背景" class="font-song text-2xl md:text-3xl font-bold text-zi">建造背景</h2>
+      </div>
+      <div class="bg-white rounded-2xl border-2 border-zi/15 shadow-lg p-6 md:p-8">
+        <div class="flex gap-4">
+          <div class="quote-mark flex-shrink-0">"</div>
+          <div>
+            <p class="text-mo/80 text-base md:text-lg leading-relaxed mb-4">
+              嵩岳寺塔始建于北魏正光四年（公元523年），坐落于河南省登封市西北约6公里的嵩山南麓太室山脚下，原为北魏宣武帝为其父孝文帝祈求冥福而建造的皇家寺院——闲居寺内的佛塔。寺院在隋仁寿二年（602年）更名为嵩岳寺，塔亦随之改称嵩岳寺塔。
+            </p>
+            <p class="text-mo/80 text-base md:text-lg leading-relaxed mb-4">
+              北魏时期正值佛教在中国大肆传播的鼎盛阶段，皇室大规模营建佛寺佛塔，嵩岳寺塔即为这一历史背景下的杰出代表作。它是我国现存最古老的砖塔，也是唯一一座十二边形平面的密檐式砖塔，具有极高的历史、科学和艺术价值，1961年被国务院公布为第一批全国重点文物保护单位。
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-zi/10">
+              <div class="text-center p-4 bg-zi/5 rounded-xl">
+                <div class="text-jin font-bold font-song text-xl">523年</div>
+                <div class="text-mo/60 text-xs mt-1">始建于北魏</div>
+              </div>
+              <div class="text-center p-4 bg-zi/5 rounded-xl">
+                <div class="text-jin font-bold font-song text-xl">1500+</div>
+                <div class="text-mo/60 text-xs mt-1">历经千年</div>
+              </div>
+              <div class="text-center p-4 bg-zi/5 rounded-xl">
+                <div class="text-jin font-bold font-song text-xl">12次</div>
+                <div class="text-mo/60 text-xs mt-1">有记载地震</div>
+              </div>
+              <div class="text-center p-4 bg-zi/5 rounded-xl">
+                <div class="text-jin font-bold font-song text-xl">完好</div>
+                <div class="text-mo/60 text-xs mt-1">结构完整无损</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 建筑结构 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="建筑结构" class="font-song text-2xl md:text-3xl font-bold text-zi">建筑结构</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 结构卡片1 -->
+        <div class="bg-white rounded-2xl border-2 border-zi/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-building text-jin text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">十二边形平面</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            塔体平面为独特的十二边形，是我国古塔中绝无仅有的形制。这种多边形平面使塔体在各个方向受力更加均匀，有效增强了结构的整体稳定性，也使塔体外观呈现出丰富的光影变化，具有极高的美学价值。
+          </p>
+        </div>
+        <!-- 结构卡片2 -->
+        <div class="bg-white rounded-2xl border-2 border-zi/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-level-up text-jin text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">十五层密檐</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            塔高37.05米，共十五层密檐。各层檐口均采用叠涩技法逐层向外挑出，形成柔和的抛物线轮廓。从下至上塔身直径逐层递减，底层最大，上部急剧收窄，整体造型轻盈秀美又不失雄浑气势。
+          </p>
+        </div>
+        <!-- 结构卡片3 -->
+        <div class="bg-white rounded-2xl border-2 border-zi/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-th-large text-jin text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">须弥座台基</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            塔体底部设有高大的须弥座式台基，以青石砌筑，分为上下两层，中部雕有壶门式装饰。台基不仅起到稳固承重的作用，也赋予塔体庄严稳重的气质，象征佛教宇宙观中的"世界之基"。
+          </p>
+        </div>
+        <!-- 结构卡片4 -->
+        <div class="bg-white rounded-2xl border-2 border-zi/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-circle-o text-jin text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">塔刹相轮</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            塔顶设塔刹，由覆钵、相轮七重、垂带、华盖和宝珠组成。相轮由粗渐细层层叠置，象征佛教修行的阶梯；宝盖宽大华丽，遮护塔顶；宝珠耸立塔尖，寓意佛光普照。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 技术解析 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="技术解析" class="font-song text-2xl md:text-3xl font-bold text-zi">技术解析</h2>
+      </div>
+      <div class="space-y-5">
+        <!-- 技术卡片1 -->
+        <div class="bg-white rounded-2xl border-2 border-zi/15 shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-zi/10 to-zi/5 px-6 py-4 border-b border-zi/10">
+            <h3 class="font-song text-lg font-bold text-zi flex items-center gap-2">
+              <i class="fa fa-cube text-jin"></i>
+              黄胶泥糯米浆砌筑技术
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-mo/75 text-sm leading-relaxed mb-4">
+              嵩岳寺塔的砖砌体采用黄胶泥拌糯米浆作为粘合剂，这是北魏时期最先进的砖石结构技术之一。糯米浆的加入使砂浆具有类似水泥的硬化特性，干燥后强度极高，耐久性远超普通泥土砂浆。这种配方在现代材料科学出现之前，代表了古代匠人对材料性质的深刻认识与精准掌控。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-zi/10 text-zi rounded-full text-xs">抗压强度高</span>
+              <span class="px-3 py-1 bg-zi/10 text-zi rounded-full text-xs">耐水耐久</span>
+              <span class="px-3 py-1 bg-zi/10 text-zi rounded-full text-xs">柔韧性佳</span>
+              <span class="px-3 py-1 bg-zi/10 text-zi rounded-full text-xs">低温可操作</span>
+            </div>
+          </div>
+        </div>
+        <!-- 技术卡片2 -->
+        <div class="bg-white rounded-2xl border-2 border-zi/15 shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-jin/10 to-jin/5 px-6 py-4 border-b border-jin/10">
+            <h3 class="font-song text-lg font-bold text-zi flex items-center gap-2">
+              <i class="fa fa-th text-jin"></i>
+              叠涩出檐营造技法
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-mo/75 text-sm leading-relaxed mb-4">
+              各层密檐采用叠涩技法砌筑，即逐层将砖向外挑出（每层挑出约15-20厘米），形成多层次的挑檐结构。这种做法无需木质斗拱支撑，纯靠砖块层层叠加的重量平衡维持稳定，既是结构构件，也是装饰构件，是我国古代砖构技艺的精髓所在。
+            </p>
+            <div class="bg-mo/5 rounded-xl p-4">
+              <p class="text-mo/60 text-xs mb-2 font-bold">叠涩层数规律：</p>
+              <p class="text-mo/70 text-sm">底层出檐最深（4步叠涩），随高度增加出檐逐渐收窄，到顶层叠涩层数减少但出挑角度保持，整体形成优美的抛物线轮廓。</p>
+            </div>
+          </div>
+        </div>
+        <!-- 技术卡片3 -->
+        <div class="bg-white rounded-2xl border-2 border-zi/15 shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-zi/10 to-jin/5 px-6 py-4 border-b border-zi/10">
+            <h3 class="font-song text-lg font-bold text-zi flex items-center gap-2">
+              <i class="fa fa-area-chart text-jin"></i>
+              地震考验与结构抗震
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-mo/75 text-sm leading-relaxed mb-4">
+              据地方志记载，嵩岳寺塔在1500年间至少经历了12次有记载的大地震，其中包括6级以上强震多次，塔体始终完好无损。其抗震机理在于：十二边形平面使各向刚度均匀；密檐结构层层卸力；糯米浆砂浆的高粘结力使砖块紧密嵌固；整体结构呈筒状，传力路径清晰。这种结构智慧远超同代建筑水平。
+            </p>
+            <div class="grid grid-cols-3 gap-4 mt-4 text-center">
+              <div class="bg-zi/5 rounded-xl p-3">
+                <div class="text-jin font-bold font-song text-lg">12+</div>
+                <div class="text-mo/60 text-xs mt-1">大地震考验</div>
+              </div>
+              <div class="bg-zi/5 rounded-xl p-3">
+                <div class="text-jin font-bold font-song text-lg">6级+</div>
+                <div class="text-mo/60 text-xs mt-1">最大震级</div>
+              </div>
+              <div class="bg-zi/5 rounded-xl p-3">
+                <div class="text-jin font-bold font-song text-lg">0</div>
+                <div class="text-mo/60 text-xs mt-1">结构性损坏</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 历史价值 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="历史价值" class="font-song text-2xl md:text-3xl font-bold text-zi">历史价值与保护</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gradient-to-br from-zi/8 to-jin/5 rounded-2xl border-2 border-zi/15 shadow-lg p-6">
+          <h3 class="font-song text-lg font-bold text-zi mb-4 flex items-center gap-2">
+            <i class="fa fa-star text-jin"></i>
+            学术研究价值
+          </h3>
+          <ul class="space-y-3 text-mo/75 text-sm">
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>我国现存最早的砖塔实物例证</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>唯一十二边形密檐式砖塔孤例</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>研究北魏建筑技术的第一手资料</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>中印建筑文化交融的实物见证</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>中国古代砖构技艺的巅峰代表</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-jin/8 to-zi/5 rounded-2xl border-2 border-jin/15 shadow-lg p-6">
+          <h3 class="font-song text-lg font-bold text-zi mb-4 flex items-center gap-2">
+            <i class="fa fa-shield text-jin"></i>
+            保护现状
+          </h3>
+          <ul class="space-y-3 text-mo/75 text-sm">
+            <li class="flex gap-2"><span class="text-zi mt-1"><i class="fa fa-flag"></i></span>1961年列入第一批全国重点文物保护单位</li>
+            <li class="flex gap-2"><span class="text-zi mt-1"><i class="fa fa-flag"></i></span>世界文化遗产"天地之中"历史建筑群核心组成</li>
+            <li class="flex gap-2"><span class="text-zi mt-1"><i class="fa fa-flag"></i></span>近年完成结构安全监测与保护修缮</li>
+            <li class="flex gap-2"><span class="text-zi mt-1"><i class="fa fa-flag"></i></span>对公众有限开放，须预约参观</li>
+            <li class="flex gap-2"><span class="text-zi mt-1"><i class="fa fa-flag"></i></span>河南省嵩山少林寺文物保护研究所管理</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 底部返回导航 -->
+  <section class="border-t-2 border-jin/20 py-10">
+    <div class="container mx-auto px-4 text-center">
+      <a href="zongjiao.html" class="inline-flex items-center gap-2 px-6 py-3 bg-jin text-mo font-bold rounded-full hover:bg-jin/90 transition-colors shadow-lg">
+        <i class="fa fa-arrow-left"></i>
+        返回宗教建筑总览
+      </a>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-mo text-white/60 py-6 text-center text-sm border-t-4 border-jin/30">
+    <p>华夏营造可视化平台 · 华夏建筑文化数字保护与传播</p>
+  </footer>
+
+</body>
+</html>

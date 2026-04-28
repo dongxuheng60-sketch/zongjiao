@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>五台山佛光寺 | 华夏营造可视化平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F8F5EE',
+            zi: '#9D65C9',
+            jin: '#D4AF37',
+            mo: '#2D2A24',
+            tang: '#8B4513',
+          },
+          fontFamily: {
+            song: ['"Source Han Serif SC"', '"Noto Serif SC"', 'serif'],
+            hei: ['"Source Han Sans SC"', '"Noto Sans SC"', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto { content-visibility: auto; }
+      .bg-paper {
+        background-color: #F8F5EE;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232D2A24' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+      }
+    }
+    .quote-mark {
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(212,175,55,0.3);
+      font-family: serif;
+    }
+    /* ===== 暗色模式 ===== */
+    html.dark body { background-color: #1a1814 !important; color: #e8e0d0 !important; }
+    html.dark .bg-paper { background-color: #1a1814 !important; background-image: none; }
+    html.dark .bg-white { background-color: #252220 !important; }
+    html.dark .bg-paper\/90 { background-color: rgba(26,24,20,0.9) !important; }
+    html.dark .border-zi\/15, html.dark .border-jin\/20, html.dark .border-tang\/15 { border-color: #3a3530 !important; }
+    html.dark .text-mo\/80, html.dark .text-mo\/70, html.dark .text-mo\/65 { color: #c8bca0 !important; }
+    html.dark .text-mo\/50, html.dark .text-mo\/60, html.dark .text-mo\/40 { color: #9a8a70 !important; }
+    html.dark footer { background-color: #0e0c0a !important; }
+    /* ===== 入场动画 ===== */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .anim-fade-up { animation: fadeUp 0.6s ease-out both; }
+    .anim-fade-in { animation: fadeIn 0.5s ease-out both; }
+    .anim-delay-1 { animation-delay: 0.1s; }
+    .anim-delay-2 { animation-delay: 0.2s; }
+    .anim-delay-3 { animation-delay: 0.3s; }
+    .anim-delay-4 { animation-delay: 0.4s; }
+    .anim-delay-5 { animation-delay: 0.5s; }
+    /* ===== 目录导航 ===== */
+    .toc-item { transition: all 0.25s ease; }
+    .toc-item:hover { transform: translateY(-1px); }
+  </style>
+</head>
+<body class="bg-paper font-hei text-mo min-h-screen">
+
+  <!-- 导航栏 -->
+  <nav class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b-2 border-jin/20">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="font-song text-2xl md:text-3xl font-bold text-zi">
+        <a href="zongjiao.html" class="hover:text-jin transition-colors">华夏营造</a>
+      </div>
+      <div class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-zi transition-colors">首页</a>
+        <a href="lizhi.html" class="hover:text-zi transition-colors">礼制建筑</a>
+        <a href="juzhu.html" class="hover:text-zi transition-colors">居住建筑</a>
+        <a href="yuanlin.html" class="hover:text-zi transition-colors">园林建筑</a>
+        <a href="fangyu.html" class="hover:text-zi transition-colors">防御建筑</a>
+        <a href="zongjiao.html" class="text-jin font-bold">宗教建筑</a>
+        <a href="baoshi.html" class="hover:text-zi transition-colors">报时建筑</a>
+      </div>
+      <button id="darkToggle" onclick="document.documentElement.classList.toggle('dark')"
+        class="ml-3 w-9 h-9 rounded-full border border-jin/30 bg-jin/10 hover:bg-jin/20 flex items-center justify-center text-jin transition-all shadow-sm" title="切换暗色模式">
+        <i class="fa fa-moon-o"></i>
+      </button>
+      <button class="md:hidden text-zi text-xl ml-2"><i class="fa fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- 目录导航锚点 -->
+  <div class="bg-white/70 backdrop-blur-sm border-b border-tang/10 sticky top-[57px] z-40">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-center gap-1 md:gap-2 py-2 overflow-x-auto text-sm">
+        <a href="#建造背景"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-tang hover:bg-tang/10 whitespace-nowrap font-medium">建造背景</a>
+        <span class="text-jin/40">·</span>
+        <a href="#建筑结构"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-tang hover:bg-tang/10 whitespace-nowrap font-medium">建筑结构</a>
+        <span class="text-jin/40">·</span>
+        <a href="#技术解析"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-tang hover:bg-tang/10 whitespace-nowrap font-medium">技术解析</a>
+        <span class="text-jin/40">·</span>
+        <a href="#历史价值"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-tang hover:bg-tang/10 whitespace-nowrap font-medium">历史价值</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 面包屑导航 -->
+  <div class="bg-tang/5 border-b border-tang/10">
+    <div class="container mx-auto px-4 py-3 text-sm text-mo/60">
+      <a href="zongjiao.html" class="hover:text-zi transition-colors">宗教建筑</a>
+      <span class="mx-2 text-jin">›</span>
+      <span class="text-tang font-bold">五台山佛光寺</span>
+    </div>
+  </div>
+
+  <!-- 页面标题区 -->
+  <section class="bg-gradient-to-b from-tang/8 to-paper py-12">
+    <div class="container mx-auto px-4 text-center">
+      <div class="inline-flex gap-3 mb-4 flex-wrap justify-center">
+        <span class="px-4 py-1 bg-jin/10 text-jin rounded-full text-sm font-bold border border-jin/30">唐代 · 857年</span>
+        <span class="px-4 py-1 bg-tang/10 text-tang rounded-full text-sm font-bold border border-tang/30">单层殿堂</span>
+        <span class="px-4 py-1 bg-mo/10 text-mo rounded-full text-sm border border-mo/20">木构</span>
+        <span class="px-4 py-1 bg-mo/10 text-mo rounded-full text-sm border border-mo/20">中国第一国宝</span>
+      </div>
+      <h1 class="font-song text-4xl md:text-5xl font-bold text-tang mb-4">五台山佛光寺</h1>
+      <p class="text-mo/60 text-lg max-w-2xl mx-auto">中国现存最完整的唐代木构建筑 · 打破"唐构无存"论断 · 东方建筑美学的巅峰</p>
+      <div class="w-16 h-1 bg-jin mx-auto mt-6 rounded-full"></div>
+    </div>
+  </section>
+
+  <!-- 视觉核心区：左图 + 右信息 -->
+  <section class="container mx-auto px-4 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+      <!-- 左：预览大图 -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-2xl border-2 border-jin/30 shadow-xl overflow-hidden h-full min-h-[420px]">
+          <div class="bg-gradient-to-r from-tang/70 to-jin/60 px-5 py-3 flex items-center justify-between">
+            <h3 class="font-song text-lg font-bold text-white">佛光寺东大殿实景</h3>
+            <span class="text-white/70 text-xs flex items-center gap-1">
+              <i class="fa fa-image"></i> 山西省忻州市五台县
+            </span>
+          </div>
+          <div class="relative w-full" style="height:460px;">
+            <img
+              src="五台山佛光寺塔实物图2.jpg"
+              alt="佛光寺东大殿"
+              class="w-full h-full object-cover"
+            >
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+              <p class="text-white text-xs opacity-80">东大殿正立面 · 唐大中十一年（857年）重建</p>
+            </div>
+          </div>
+          <!-- 图片下方综合信息区 -->
+          <div class="bg-gradient-to-b from-tang/5 to-jin/5 border-t border-tang/10">
+            <!-- 核心参数横向条 -->
+            <div class="grid grid-cols-4 divide-x divide-tang/10 bg-white/50">
+              <div class="flex flex-col items-center py-3 px-1 hover:bg-tang/5 transition-colors">
+                <i class="fa fa-calendar text-tang text-base mb-1"></i>
+                <span class="text-jin font-bold font-song text-base">857年</span>
+                <span class="text-mo/35 text-xs">重建年代</span>
+              </div>
+              <div class="flex flex-col items-center py-3 px-1 hover:bg-tang/5 transition-colors">
+                <i class="fa fa-th text-tang text-base mb-1"></i>
+                <span class="text-jin font-bold font-song text-base">7间</span>
+                <span class="text-mo/35 text-xs">面阔34米</span>
+              </div>
+              <div class="flex flex-col items-center py-3 px-1 hover:bg-tang/5 transition-colors">
+                <i class="fa fa-columns text-tang text-base mb-1"></i>
+                <span class="text-jin font-bold font-song text-base">4椽</span>
+                <span class="text-mo/35 text-xs">进深17米</span>
+              </div>
+              <div class="flex flex-col items-center py-3 px-1 hover:bg-tang/5 transition-colors">
+                <i class="fa fa-user-circle text-tang text-base mb-1"></i>
+                <span class="text-jin font-bold font-song text-base">35尊</span>
+                <span class="text-mo/35 text-xs">唐代彩塑</span>
+              </div>
+            </div>
+            <!-- 分隔装饰线 -->
+            <div class="flex items-center px-5 py-2 gap-3">
+              <div class="flex-1 h-px bg-gradient-to-r from-transparent via-tang/20 to-transparent"></div>
+              <span class="text-tang/30 text-xs tracking-widest">唐构之首 · 国宝第一</span>
+              <div class="flex-1 h-px bg-gradient-to-r from-transparent via-tang/20 to-transparent"></div>
+            </div>
+            <!-- 底部时间线简览 -->
+            <div class="px-5 pb-4">
+              <div class="flex items-center gap-0.5">
+                <div class="flex-1 flex flex-col items-center gap-0.5">
+                  <div class="w-2 h-2 rounded-full bg-tang/60"></div>
+                  <span class="text-tang/50 text-xs">北魏</span>
+                  <span class="text-mo/40 text-xs leading-tight">始建佛光寺</span>
+                </div>
+                <div class="flex-1 h-px bg-gradient-to-r from-tang/20 to-tang/40"></div>
+                <div class="flex-1 flex flex-col items-center gap-0.5">
+                  <div class="w-2 h-2 rounded-full bg-tang/60"></div>
+                  <span class="text-tang/50 text-xs">857年</span>
+                  <span class="text-mo/40 text-xs leading-tight">东大殿重建</span>
+                </div>
+                <div class="flex-1 h-px bg-gradient-to-r from-tang/40 to-jin/40"></div>
+                <div class="flex-1 flex flex-col items-center gap-0.5">
+                  <div class="w-2 h-2 rounded-full bg-jin/70"></div>
+                  <span class="text-tang/50 text-xs">1937年</span>
+                  <span class="text-mo/40 text-xs leading-tight">梁思成发现</span>
+                </div>
+                <div class="flex-1 h-px bg-gradient-to-r from-jin/40 to-tang/20"></div>
+                <div class="flex-1 flex flex-col items-center gap-0.5">
+                  <div class="w-2 h-2 rounded-full bg-zi/60"></div>
+                  <span class="text-tang/50 text-xs">2009年</span>
+                  <span class="text-mo/40 text-xs leading-tight">世界遗产</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右：文字介绍与信息可视化 -->
+      <div class="lg:col-span-3 flex flex-col gap-5">
+
+        <!-- 建造背景 -->
+        <div class="bg-white rounded-2xl border-2 border-tang/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-1 h-7 bg-jin rounded-full"></div>
+            <h2 id="建造背景" class="font-song text-xl font-bold text-tang">建造背景</h2>
+          </div>
+          <div class="flex gap-3">
+            <div class="quote-mark flex-shrink-0 text-3xl leading-none mt-1">"</div>
+            <div>
+              <p class="text-mo/80 text-sm leading-relaxed mb-3">
+                佛光寺位于山西省忻州市五台县豆村镇佛光山中，始建于北魏，唐武宗会昌五年（845年）"会昌法难"期间遭拆毁，<strong>唐宣宗大中十一年（857年）</strong>重建，现存的<strong>东大殿</strong>即为这次重建的建筑，是中国现存规模最大、保存最完整的唐代木构建筑。
+              </p>
+              <p class="text-mo/80 text-sm leading-relaxed">
+                1937年，著名建筑学家<strong>梁思成、林徽因</strong>率团考察时，在梁架上发现了唐代题记，确认此殿建造年代，彻底打破了日本学者"中国境内无唐代木构建筑"的断言，轰动建筑学界。佛光寺东大殿被誉为<strong>"中国第一国宝"</strong>，是研究唐代建筑不可替代的实物依据。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 核心数据卡片组 -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gradient-to-br from-tang/8 to-jin/5 rounded-2xl border-2 border-tang/15 shadow-lg p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-jin/10 rounded-full flex items-center justify-center">
+                <i class="fa fa-university text-tang text-base"></i>
+              </div>
+              <h3 class="font-song text-base font-bold text-tang">唐构特征</h3>
+            </div>
+            <ul class="space-y-2 text-mo/70 text-xs leading-relaxed">
+              <li class="flex gap-2"><span class="text-jin mt-0.5"><i class="fa fa-check-circle"></i></span>斗拱硕大，出跳深远（四铺作）</li>
+              <li class="flex gap-2"><span class="text-jin mt-0.5"><i class="fa fa-check-circle"></i></span>柱有侧脚与生起，结构稳定</li>
+              <li class="flex gap-2"><span class="text-jin mt-0.5"><i class="fa fa-check-circle"></i></span>屋顶平缓舒展，举折较小</li>
+              <li class="flex gap-2"><span class="text-jin mt-0.5"><i class="fa fa-check-circle"></i></span>材分制模数化设计体系</li>
+            </ul>
+          </div>
+          <div class="bg-gradient-to-br from-jin/8 to-tang/5 rounded-2xl border-2 border-jin/15 shadow-lg p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-jin/10 rounded-full flex items-center justify-center">
+                <i class="fa fa-shield text-jin text-base"></i>
+              </div>
+              <h3 class="font-song text-base font-bold text-tang">保护荣誉</h3>
+            </div>
+            <ul class="space-y-2 text-mo/70 text-xs leading-relaxed">
+              <li class="flex gap-2"><span class="text-tang mt-0.5"><i class="fa fa-flag"></i></span>1961年第一批全国重点文保单位</li>
+              <li class="flex gap-2"><span class="text-tang mt-0.5"><i class="fa fa-flag"></i></span>2009年列入世界文化遗产</li>
+              <li class="flex gap-2"><span class="text-tang mt-0.5"><i class="fa fa-flag"></i></span>梁思成称其为"中国第一国宝"</li>
+              <li class="flex gap-2"><span class="text-tang mt-0.5"><i class="fa fa-flag"></i></span>五台山景区核心文物保护区</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 东大殿平面示意 -->
+        <div class="bg-white rounded-2xl border-2 border-tang/15 shadow-lg p-5">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-1 h-7 bg-jin rounded-full"></div>
+            <h2 class="font-song text-xl font-bold text-tang">东大殿平面结构示意</h2>
+          </div>
+          <!-- 7×4 柱网示意图 -->
+          <div class="bg-tang/3 rounded-xl p-4">
+            <div class="flex flex-col gap-2 items-center">
+              <!-- 7间面阔 × 4椽进深 柱网 -->
+              <p class="text-mo/50 text-xs mb-1">← 面阔七间（34米）→</p>
+              <div class="flex flex-col gap-3 w-full max-w-xs mx-auto">
+                <div class="flex justify-between">
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>
+                </div>
+              </div>
+              <p class="text-mo/50 text-xs mt-1">↑ 进深四椽（17.66米）↑</p>
+              <div class="flex gap-4 mt-2">
+                <div class="flex items-center gap-1.5 text-xs text-mo/60">
+                  <span class="w-3 h-3 rounded-full bg-tang/60 inline-block"></span>檐柱
+                </div>
+                <div class="flex items-center gap-1.5 text-xs text-mo/60">
+                  <span class="w-3 h-3 rounded-full bg-jin/60 inline-block"></span>内柱
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="text-mo/50 text-xs mt-3 bg-tang/5 rounded-lg p-3 leading-relaxed">
+            <i class="fa fa-info-circle text-jin mr-1"></i>
+            东大殿面阔七间（34米），进深四椽（17.66米），单层庑殿顶，是唐代建筑规格最高的形制。殿内供奉35尊唐代彩塑，是现存最大的唐代彩塑群。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 详细介绍区 -->
+  <section class="container mx-auto px-4 py-10">
+
+    <!-- 建筑结构 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="建筑结构" class="font-song text-2xl md:text-3xl font-bold text-tang">建筑结构</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl border-2 border-tang/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-th-large text-tang text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">庑殿顶形制</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            东大殿采用<strong>四阿（庑殿）顶</strong>，是中国古代建筑屋顶等级最高的形制，前后两坡加左右两侧坡共形成五脊四坡。屋面坡度平缓（举高约1/5），屋角微微翘起，整体轮廓舒展大气，呈现出唐代建筑特有的雄浑沉稳之美，与宋以后越来越高翘的风格形成鲜明对比。
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-tang/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-sort-amount-desc text-tang text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">斗拱出跳</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            东大殿的斗拱用料硕大，外檐斗拱高度约为柱高的1/2，出跳深达<strong>四跳（四铺作）</strong>，使屋檐从墙身向外挑出近4米，是中国现存唐代建筑中斗拱出跳最深的实例之一。这种超深出檐不仅遮挡了雨水，也赋予建筑立面强烈的光影层次，形成典型的唐代建筑美学。
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-tang/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-arrows-v text-tang text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">侧脚与生起</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            东大殿的檐柱采用"<strong>侧脚</strong>"做法（柱根略向外偏、柱头向内倾斜）和"<strong>生起</strong>"做法（角柱比中柱略高），使整体柱列形成向心的收紧感，增强建筑的整体稳定性，同时在视觉上消除了直角柱网产生的视错觉，使建筑看起来更加端正挺拔，这是《营造法式》记载的唐宋木构核心技法。
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-tang/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-paint-brush text-tang text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">唐代彩塑群</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            殿内现存<strong>35尊唐代彩塑</strong>，是中国现存规模最大的唐代彩塑群，主像为卢舍那佛坐像，两侧分列菩萨、天王、供养人像，比例准确，神态自然，衣褶流畅，体现了盛唐造像艺术的最高水准。殿内梁架上还留存有唐代供养人题记，是确认建造年代的直接证据。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 技术解析 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="技术解析" class="font-song text-2xl md:text-3xl font-bold text-tang">技术解析</h2>
+      </div>
+      <div class="space-y-5">
+        <div class="bg-white rounded-2xl border-2 border-tang/15 shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-tang/10 to-tang/5 px-6 py-4 border-b border-tang/10">
+            <h3 class="font-song text-lg font-bold text-tang flex items-center gap-2">
+              <i class="fa fa-cogs text-jin"></i>
+              材分制模数化体系
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-mo/75 text-sm leading-relaxed mb-4">
+              东大殿以"材"（斗拱截面的高度）为基本模数单位，全殿所有构件的尺寸均是"材"的整数倍，实现了<strong>模数化标准化设计</strong>。这一体系与《营造法式》中记载的"以材为祖"的设计原则完全吻合，证明了该书理论来源于唐代成熟工程实践，同时也使建筑构件可以在施工现场外预制，大幅提高了建造效率。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-tang/10 text-tang rounded-full text-xs">模数化设计</span>
+              <span class="px-3 py-1 bg-tang/10 text-tang rounded-full text-xs">预制化构件</span>
+              <span class="px-3 py-1 bg-tang/10 text-tang rounded-full text-xs">标准化施工</span>
+              <span class="px-3 py-1 bg-tang/10 text-tang rounded-full text-xs">《营造法式》源头</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-tang/15 shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-jin/10 to-jin/5 px-6 py-4 border-b border-jin/10">
+            <h3 class="font-song text-lg font-bold text-tang flex items-center gap-2">
+              <i class="fa fa-eye text-jin"></i>
+              梁思成的发现
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-mo/75 text-sm leading-relaxed mb-4">
+              1937年6月，梁思成与林徽因、莫宗江、纪玉堂在敦煌壁画中发现了描绘五台山佛光寺的图像，随即前往考察。在东大殿的梁架内，他们发现了"女弟子宁公遇"的供养人题记和"唐大中十一年"字样，经与殿内彩塑对比，确认建造年代。这一发现轰动国际学界，彻底终结了日本学者"中国境内已无唐代木构建筑"的论断。
+            </p>
+            <div class="bg-mo/5 rounded-xl p-4">
+              <p class="text-mo/60 text-xs mb-2 font-bold">发现经过：</p>
+              <p class="text-mo/70 text-sm">1937年 → 发现敦煌壁画线索 → 赴五台山现场考察 → 发现梁架唐代题记 → 确认857年建造年代 → 向国际学界公布 → 轰动建筑学界</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-tang/15 shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-tang/10 to-jin/5 px-6 py-4 border-b border-tang/10">
+            <h3 class="font-song text-lg font-bold text-tang flex items-center gap-2">
+              <i class="fa fa-history text-jin"></i>
+              保存千年的秘密
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-mo/75 text-sm leading-relaxed mb-4">
+              佛光寺东大殿之所以能历经1167年保存至今，与其偏僻的地理位置密切相关。寺庙深藏于五台山豆村镇的山坳中，交通不便，远离战乱核心区；同时当地气候干燥，木材腐朽速度极慢；加之历代僧众的持续维护，才使这座唐代建筑奇迹得以保全。相比之下，绝大多数唐代建筑在历次战乱和"法难"中均遭毁损。
+            </p>
+            <div class="grid grid-cols-3 gap-4 mt-4 text-center">
+              <div class="bg-tang/5 rounded-xl p-3">
+                <div class="text-jin font-bold font-song text-lg">1167</div>
+                <div class="text-mo/60 text-xs mt-1">保存年数</div>
+              </div>
+              <div class="bg-tang/5 rounded-xl p-3">
+                <div class="text-jin font-bold font-song text-lg">35尊</div>
+                <div class="text-mo/60 text-xs mt-1">唐代彩塑</div>
+              </div>
+              <div class="bg-tang/5 rounded-xl p-3">
+                <div class="text-jin font-bold font-song text-lg">完好</div>
+                <div class="text-mo/60 text-xs mt-1">结构现状</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 历史价值 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="历史价值" class="font-song text-2xl md:text-3xl font-bold text-tang">历史价值与保护</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gradient-to-br from-tang/8 to-jin/5 rounded-2xl border-2 border-tang/15 shadow-lg p-6">
+          <h3 class="font-song text-lg font-bold text-tang mb-4 flex items-center gap-2">
+            <i class="fa fa-star text-jin"></i>
+            学术研究价值
+          </h3>
+          <ul class="space-y-3 text-mo/75 text-sm">
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>中国现存规模最大的唐代木构建筑</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>唐代"材分制"设计理论的实物佐证</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>现存规模最大的唐代彩塑群（35尊）</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>东亚建筑史研究的基准性建筑</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>梁思成建筑理论体系的重要基石</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-jin/8 to-tang/5 rounded-2xl border-2 border-jin/15 shadow-lg p-6">
+          <h3 class="font-song text-lg font-bold text-tang mb-4 flex items-center gap-2">
+            <i class="fa fa-shield text-jin"></i>
+            保护现状
+          </h3>
+          <ul class="space-y-3 text-mo/75 text-sm">
+            <li class="flex gap-2"><span class="text-tang mt-1"><i class="fa fa-flag"></i></span>1961年列入第一批全国重点文物保护单位</li>
+            <li class="flex gap-2"><span class="text-tang mt-1"><i class="fa fa-flag"></i></span>2009年"五台山"列入世界文化遗产</li>
+            <li class="flex gap-2"><span class="text-tang mt-1"><i class="fa fa-flag"></i></span>梁思成称之为"中国第一国宝"</li>
+            <li class="flex gap-2"><span class="text-tang mt-1"><i class="fa fa-flag"></i></span>结构整体保存完好，持续监测中</li>
+            <li class="flex gap-2"><span class="text-tang mt-1"><i class="fa fa-flag"></i></span>每年限额开放参观，文物保护优先</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 底部引言 -->
+  <section class="bg-gradient-to-r from-tang/5 via-jin/5 to-tang/5 border-t border-b border-jin/20 py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="font-song text-xl text-mo/70 italic">
+        <span class="text-jin text-3xl align-middle leading-none">「</span>
+        &thinsp;这是中国建筑史上的重要发现&thinsp;
+        <span class="text-jin text-3xl align-middle leading-none">」</span>
+      </p>
+      <p class="text-mo/40 text-sm mt-2 tracking-widest">— 梁思成，1937年考察后语 · 中国第一国宝</p>
+    </div>
+  </section>
+
+  <!-- 底部返回导航 -->
+  <section class="py-10">
+    <div class="container mx-auto px-4 text-center">
+      <a href="zongjiao.html" class="inline-flex items-center gap-2 px-6 py-3 bg-tang text-white font-bold rounded-full hover:bg-tang/90 transition-colors shadow-lg">
+        <i class="fa fa-arrow-left"></i>
+        返回宗教建筑总览
+      </a>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-mo text-white/60 py-6 text-center text-sm border-t-4 border-jin/30">
+    <p>华夏营造可视化平台 · 华夏建筑文化数字保护与传播</p>
+  </footer>
+
+</body>
+</html>

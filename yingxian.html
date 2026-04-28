@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>应县木塔 | 华夏营造可视化平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F8F5EE',
+            zi: '#9D65C9',
+            jin: '#D4AF37',
+            mo: '#2D2A24',
+            mu: '#7B4F2E',
+          },
+          fontFamily: {
+            song: ['"Source Han Serif SC"', '"Noto Serif SC"', 'serif'],
+            hei: ['"Source Han Sans SC"', '"Noto Sans SC"', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto { content-visibility: auto; }
+      .bg-paper {
+        background-color: #F8F5EE;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232D2A24' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+      }
+    }
+    .section-alt {
+      background: linear-gradient(135deg, rgba(123,79,46,0.04) 0%, rgba(212,175,55,0.04) 100%);
+    }
+    .quote-mark {
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(212,175,55,0.3);
+      font-family: serif;
+    }
+    /* ===== 暗色模式 ===== */
+    html.dark body { background-color: #1a1814 !important; color: #e8e0d0 !important; }
+    html.dark .bg-paper { background-color: #1a1814 !important; background-image: none; }
+    html.dark .bg-white { background-color: #252220 !important; }
+    html.dark .bg-paper\/90 { background-color: rgba(26,24,20,0.9) !important; }
+    html.dark .border-zi\/15, html.dark .border-jin\/20, html.dark .border-mu\/15 { border-color: #3a3530 !important; }
+    html.dark .text-mo\/80, html.dark .text-mo\/70, html.dark .text-mo\/65 { color: #c8bca0 !important; }
+    html.dark .text-mo\/50, html.dark .text-mo\/60, html.dark .text-mo\/40 { color: #9a8a70 !important; }
+    html.dark footer { background-color: #0e0c0a !important; }
+    /* ===== 入场动画 ===== */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .anim-fade-up { animation: fadeUp 0.6s ease-out both; }
+    .anim-fade-in { animation: fadeIn 0.5s ease-out both; }
+    .anim-delay-1 { animation-delay: 0.1s; }
+    .anim-delay-2 { animation-delay: 0.2s; }
+    .anim-delay-3 { animation-delay: 0.3s; }
+    .anim-delay-4 { animation-delay: 0.4s; }
+    .anim-delay-5 { animation-delay: 0.5s; }
+    /* ===== 目录导航 ===== */
+    .toc-item { transition: all 0.25s ease; }
+    .toc-item:hover { transform: translateY(-1px); }
+  </style>
+</head>
+<body class="bg-paper font-hei text-mo min-h-screen">
+
+  <!-- 导航栏 -->
+  <nav class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b-2 border-jin/20">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="font-song text-2xl md:text-3xl font-bold text-zi">
+        <a href="zongjiao.html" class="hover:text-jin transition-colors">华夏营造</a>
+      </div>
+      <div class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-zi transition-colors">首页</a>
+        <a href="lizhi.html" class="hover:text-zi transition-colors">礼制建筑</a>
+        <a href="juzhu.html" class="hover:text-zi transition-colors">居住建筑</a>
+        <a href="yuanlin.html" class="hover:text-zi transition-colors">园林建筑</a>
+        <a href="fangyu.html" class="hover:text-zi transition-colors">防御建筑</a>
+        <a href="zongjiao.html" class="text-jin font-bold">宗教建筑</a>
+        <a href="baoshi.html" class="hover:text-zi transition-colors">报时建筑</a>
+      </div>
+      <button id="darkToggle" onclick="document.documentElement.classList.toggle('dark')"
+        class="ml-3 w-9 h-9 rounded-full border border-jin/30 bg-jin/10 hover:bg-jin/20 flex items-center justify-center text-jin transition-all shadow-sm" title="切换暗色模式">
+        <i class="fa fa-moon-o"></i>
+      </button>
+      <button class="md:hidden text-zi text-xl ml-2"><i class="fa fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- 目录导航锚点 -->
+  <div class="bg-white/70 backdrop-blur-sm border-b border-mu/10 sticky top-[57px] z-40">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-center gap-1 md:gap-2 py-2 overflow-x-auto text-sm">
+        <a href="#建造背景"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-mu hover:bg-mu/10 whitespace-nowrap font-medium">建造背景</a>
+        <span class="text-jin/40">·</span>
+        <a href="#建筑结构"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-mu hover:bg-mu/10 whitespace-nowrap font-medium">建筑结构</a>
+        <span class="text-jin/40">·</span>
+        <a href="#技术解析"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-mu hover:bg-mu/10 whitespace-nowrap font-medium">技术解析</a>
+        <span class="text-jin/40">·</span>
+        <a href="#历史价值"   class="toc-item px-3 py-1.5 rounded-full text-mo/60 hover:text-mu hover:bg-mu/10 whitespace-nowrap font-medium">历史价值</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 面包屑导航 -->
+  <div class="bg-mu/5 border-b border-mu/10">
+    <div class="container mx-auto px-4 py-3 text-sm text-mo/60">
+      <a href="zongjiao.html" class="hover:text-zi transition-colors">宗教建筑</a>
+      <span class="mx-2 text-jin">›</span>
+      <span class="text-mu font-bold">应县木塔</span>
+    </div>
+  </div>
+
+  <!-- 页面标题区 -->
+  <section class="bg-gradient-to-b from-mu/8 to-paper py-12">
+    <div class="container mx-auto px-4 text-center">
+      <div class="inline-flex gap-3 mb-4 flex-wrap justify-center">
+        <span class="px-4 py-1 bg-jin/10 text-jin rounded-full text-sm font-bold border border-jin/30">辽代 · 1056年</span>
+        <span class="px-4 py-1 bg-mu/10 text-mu rounded-full text-sm font-bold border border-mu/30">五层六檐</span>
+        <span class="px-4 py-1 bg-mo/10 text-mo rounded-full text-sm border border-mo/20">纯木构</span>
+        <span class="px-4 py-1 bg-mo/10 text-mo rounded-full text-sm border border-mo/20">67.31米</span>
+      </div>
+      <h1 class="font-song text-4xl md:text-5xl font-bold text-mu mb-4">应县木塔</h1>
+      <p class="text-mo/60 text-lg max-w-2xl mx-auto">世界现存最高最古老的木构塔 · 全塔无钉无铆 · 辽代木构建筑之巅峰</p>
+      <div class="w-16 h-1 bg-jin mx-auto mt-6 rounded-full"></div>
+    </div>
+  </section>
+
+  <!-- 视觉核心区：左图 + 右信息 -->
+  <section class="container mx-auto px-4 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+      <!-- 左：预览大图 -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-2xl border-2 border-jin/30 shadow-xl overflow-hidden h-full min-h-[420px]">
+          <div class="bg-gradient-to-r from-mu/70 to-jin/60 px-5 py-3 flex items-center justify-between">
+            <h3 class="font-song text-lg font-bold text-white">应县木塔实景</h3>
+            <span class="text-white/70 text-xs flex items-center gap-1">
+              <i class="fa fa-image"></i> 山西省朔州市应县
+            </span>
+          </div>
+          <div class="relative w-full" style="height:460px;">
+            <img
+              src="应县木塔实物图2.jpg"
+              alt="应县木塔"
+              class="w-full h-full object-cover"
+            >
+            <!-- 图片信息浮层 -->
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+              <p class="text-white text-xs opacity-80">佛宫寺释迦塔 · 辽清宁二年（1056年）建</p>
+            </div>
+          </div>
+          <!-- 图片下方综合信息区 -->
+          <div class="bg-gradient-to-b from-mu/5 to-jin/5 border-t border-mu/10">
+            <!-- 核心参数横向条 -->
+            <div class="grid grid-cols-4 divide-x divide-mu/10 bg-white/50">
+              <div class="flex flex-col items-center py-3 px-1 hover:bg-mu/5 transition-colors">
+                <i class="fa fa-long-arrow-up text-mu text-base mb-1"></i>
+                <span class="text-jin font-bold font-song text-base">67.31</span>
+                <span class="text-mo/35 text-xs">米塔高</span>
+              </div>
+              <div class="flex flex-col items-center py-3 px-1 hover:bg-mu/5 transition-colors">
+                <i class="fa fa-th-large text-mu text-base mb-1"></i>
+                <span class="text-jin font-bold font-song text-base">八角形</span>
+                <span class="text-mo/35 text-xs">平面形制</span>
+              </div>
+              <div class="flex flex-col items-center py-3 px-1 hover:bg-mu/5 transition-colors">
+                <i class="fa fa-sitemap text-mu text-base mb-1"></i>
+                <span class="text-jin font-bold font-song text-base">9层</span>
+                <span class="text-mo/35 text-xs">内外结构</span>
+              </div>
+              <div class="flex flex-col items-center py-3 px-1 hover:bg-mu/5 transition-colors">
+                <i class="fa fa-cubes text-mu text-base mb-1"></i>
+                <span class="text-jin font-bold font-song text-base">54种</span>
+                <span class="text-mo/35 text-xs">斗拱样式</span>
+              </div>
+            </div>
+            <!-- 分隔装饰线 -->
+            <div class="flex items-center px-5 py-2 gap-3">
+              <div class="flex-1 h-px bg-gradient-to-r from-transparent via-mu/20 to-transparent"></div>
+              <span class="text-mu/30 text-xs tracking-widest">千年木构 · 抗震奇迹</span>
+              <div class="flex-1 h-px bg-gradient-to-r from-transparent via-mu/20 to-transparent"></div>
+            </div>
+            <!-- 底部时间线简览 -->
+            <div class="px-5 pb-4">
+              <div class="flex items-center gap-0.5">
+                <div class="flex-1 flex flex-col items-center gap-0.5">
+                  <div class="w-2 h-2 rounded-full bg-mu/60"></div>
+                  <span class="text-mu/50 text-xs">1056年</span>
+                  <span class="text-mo/40 text-xs leading-tight">辽代始建</span>
+                </div>
+                <div class="flex-1 h-px bg-gradient-to-r from-mu/20 to-mu/40"></div>
+                <div class="flex-1 flex flex-col items-center gap-0.5">
+                  <div class="w-2 h-2 rounded-full bg-mu/60"></div>
+                  <span class="text-mu/50 text-xs">1924年</span>
+                  <span class="text-mo/40 text-xs leading-tight">局部修缮</span>
+                </div>
+                <div class="flex-1 h-px bg-gradient-to-r from-mu/40 to-jin/40"></div>
+                <div class="flex-1 flex flex-col items-center gap-0.5">
+                  <div class="w-2 h-2 rounded-full bg-jin/70"></div>
+                  <span class="text-mu/50 text-xs">1961年</span>
+                  <span class="text-mo/40 text-xs leading-tight">国保单位</span>
+                </div>
+                <div class="flex-1 h-px bg-gradient-to-r from-jin/40 to-mu/20"></div>
+                <div class="flex-1 flex flex-col items-center gap-0.5">
+                  <div class="w-2 h-2 rounded-full bg-zi/60"></div>
+                  <span class="text-mu/50 text-xs">2016年</span>
+                  <span class="text-mo/40 text-xs leading-tight">修缮研究</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右：文字介绍与信息可视化 -->
+      <div class="lg:col-span-3 flex flex-col gap-5">
+
+        <!-- 建造背景 -->
+        <div class="bg-white rounded-2xl border-2 border-mu/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-1 h-7 bg-jin rounded-full"></div>
+            <h2 id="建造背景" class="font-song text-xl font-bold text-mu">建造背景</h2>
+          </div>
+          <div class="flex gap-3">
+            <div class="quote-mark flex-shrink-0 text-3xl leading-none mt-1">"</div>
+            <div>
+              <p class="text-mo/80 text-sm leading-relaxed mb-3">
+                应县木塔全称<strong>佛宫寺释迦塔</strong>，坐落于山西省朔州市应县县城西北佛宫寺内，建于辽清宁二年（公元1056年），由辽兴宗之子道宗皇帝下令建造，距今已有近970年的历史，是世界上现存最高、最古老的纯木构楼阁式塔。
+              </p>
+              <p class="text-mo/80 text-sm leading-relaxed">
+                塔为平面八角形，外观五层六檐，内部实为九层（含四个暗层），通高<strong>67.31米</strong>，底层直径30.27米。整塔全部以木材构筑，无一铁钉，依靠2000余个形状各异的<strong>榫卯构件</strong>拼接而成，历经近千年多次战争与地震，仍岿然不动，被誉为"天下第一塔"。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 核心数据卡片组 -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gradient-to-br from-mu/8 to-jin/5 rounded-2xl border-2 border-mu/15 shadow-lg p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-jin/10 rounded-full flex items-center justify-center">
+                <i class="fa fa-tree text-mu text-base"></i>
+              </div>
+              <h3 class="font-song text-base font-bold text-mu">木构奇迹</h3>
+            </div>
+            <ul class="space-y-2 text-mo/70 text-xs leading-relaxed">
+              <li class="flex gap-2"><span class="text-jin mt-0.5"><i class="fa fa-check-circle"></i></span>全塔无一铁钉，纯榫卯结构</li>
+              <li class="flex gap-2"><span class="text-jin mt-0.5"><i class="fa fa-check-circle"></i></span>54种形制各异的斗拱样式</li>
+              <li class="flex gap-2"><span class="text-jin mt-0.5"><i class="fa fa-check-circle"></i></span>2000余个木构件精密咬合</li>
+              <li class="flex gap-2"><span class="text-jin mt-0.5"><i class="fa fa-check-circle"></i></span>柔性结构可吸收地震能量</li>
+            </ul>
+          </div>
+          <div class="bg-gradient-to-br from-jin/8 to-mu/5 rounded-2xl border-2 border-jin/15 shadow-lg p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-jin/10 rounded-full flex items-center justify-center">
+                <i class="fa fa-shield text-jin text-base"></i>
+              </div>
+              <h3 class="font-song text-base font-bold text-mu">保护现状</h3>
+            </div>
+            <ul class="space-y-2 text-mo/70 text-xs leading-relaxed">
+              <li class="flex gap-2"><span class="text-mu mt-0.5"><i class="fa fa-flag"></i></span>1961年列入第一批全国重点文保</li>
+              <li class="flex gap-2"><span class="text-mu mt-0.5"><i class="fa fa-flag"></i></span>2016年启动修缮加固工程</li>
+              <li class="flex gap-2"><span class="text-mu mt-0.5"><i class="fa fa-flag"></i></span>已发现明显整体倾斜，亟需保护</li>
+              <li class="flex gap-2"><span class="text-mu mt-0.5"><i class="fa fa-flag"></i></span>吉尼斯世界纪录认证最高木塔</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 塔层结构可视化 -->
+        <div class="bg-white rounded-2xl border-2 border-mu/15 shadow-lg p-5">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-1 h-7 bg-jin rounded-full"></div>
+            <h2 class="font-song text-xl font-bold text-mu">九层塔体结构示意</h2>
+          </div>
+          <div class="flex gap-3 items-end mb-2">
+            <!-- 可视化柱状：9层（5明4暗），明层较高，暗层较矮 -->
+            <div class="flex items-end gap-0.5 h-20 flex-1">
+              <div style="height:100%" class="flex-1 bg-gradient-to-t from-mu/70 to-mu/30 rounded-t-sm" title="第1明层（底层）"></div>
+              <div style="height:45%" class="flex-1 bg-gradient-to-t from-jin/50 to-jin/20 rounded-t-sm" title="第1暗层"></div>
+              <div style="height:80%" class="flex-1 bg-gradient-to-t from-mu/70 to-mu/30 rounded-t-sm" title="第2明层"></div>
+              <div style="height:40%" class="flex-1 bg-gradient-to-t from-jin/50 to-jin/20 rounded-t-sm" title="第2暗层"></div>
+              <div style="height:68%" class="flex-1 bg-gradient-to-t from-mu/70 to-mu/30 rounded-t-sm" title="第3明层"></div>
+              <div style="height:36%" class="flex-1 bg-gradient-to-t from-jin/50 to-jin/20 rounded-t-sm" title="第3暗层"></div>
+              <div style="height:55%" class="flex-1 bg-gradient-to-t from-mu/70 to-mu/30 rounded-t-sm" title="第4明层"></div>
+              <div style="height:30%" class="flex-1 bg-gradient-to-t from-jin/50 to-jin/20 rounded-t-sm" title="第4暗层"></div>
+              <div style="height:40%" class="flex-1 bg-gradient-to-t from-mu/70 to-mu/30 rounded-t-sm" title="第5明层（顶层）"></div>
+            </div>
+            <!-- 图例 -->
+            <div class="flex flex-col gap-1.5 text-xs text-mo/60 ml-2 flex-shrink-0">
+              <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-mu/50 inline-block"></span>明层（5层）</div>
+              <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-jin/40 inline-block"></span>暗层（4层）</div>
+            </div>
+          </div>
+          <div class="flex justify-between text-mo/35 text-xs mt-1">
+            <span>底层（最宽）</span>
+            <span>← 逐层收窄 →</span>
+            <span>顶层（最窄）</span>
+          </div>
+          <p class="text-mo/50 text-xs mt-2 bg-mu/5 rounded-lg p-3 leading-relaxed">
+            <i class="fa fa-info-circle text-jin mr-1"></i>
+            外观五层六檐，内部实为<strong>九层结构</strong>（5明4暗）。暗层虽不对外开窗，但承担斜撑传力的关键结构功能，是整塔抗震体系的核心所在。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 详细介绍区 -->
+  <section class="container mx-auto px-4 py-10">
+
+    <!-- 建筑结构 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="建筑结构" class="font-song text-2xl md:text-3xl font-bold text-mu">建筑结构</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl border-2 border-mu/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-sitemap text-mu text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">八角形平面</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            塔的平面为正八角形，底层直径30.27米，内外两圈柱网构成双筒结构。八角形平面使各方向的受力更均匀，能有效分散风荷载与地震力，是辽代木构建筑对结构稳定性深刻认识的体现。外圈24根柱，内圈8根柱，两圈之间形成回廊，可供信众绕塔礼佛。
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-mu/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-th text-mu text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">54种斗拱</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            全塔共使用<strong>54种形制、共计480余朵</strong>斗拱，是中国古建筑中斗拱种类最多的单体建筑之一。每朵斗拱均为榫卯咬合，层层出跳，既承担传递荷载的结构功能，又是建筑立面的核心装饰构件，外观精美繁复，被学界称为"斗拱博物馆"。
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-mu/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-arrows-v text-mu text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">暗层斜撑抗震</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            四个暗层内设有大量斜向支撑木构件，形成三角形桁架体系，将水平地震力有效传导至基础。明暗层交替的设计使塔体既有足够的层高展示宗教空间，又具备极强的整体刚度，这是古代工匠在无现代力学理论指导下，以实践经验总结出的抗震结构智慧。
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-mu/15 shadow-lg p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-jin/10 rounded-full flex items-center justify-center">
+              <i class="fa fa-bullseye text-mu text-lg"></i>
+            </div>
+            <h3 class="font-song text-lg font-bold text-mo">须弥座与刹顶</h3>
+          </div>
+          <p class="text-mo/70 text-sm leading-relaxed">
+            底部设石砌须弥座台基，高4米，分为上下两重，雕刻精美。塔顶以铁刹收尾，刹高9.91米，由仰莲、宝珠、相轮十三重、宝盖、圆光、仰月、宝珠叠置而成，刹尖直刺苍穹，为整塔画上点睛之笔，彰显佛教宇宙观中须弥山的象征意义。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 技术解析 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="技术解析" class="font-song text-2xl md:text-3xl font-bold text-mu">技术解析</h2>
+      </div>
+      <div class="space-y-5">
+        <div class="bg-white rounded-2xl border-2 border-mu/15 shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-mu/10 to-mu/5 px-6 py-4 border-b border-mu/10">
+            <h3 class="font-song text-lg font-bold text-mu flex items-center gap-2">
+              <i class="fa fa-link text-jin"></i>
+              榫卯无钉体系
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-mo/75 text-sm leading-relaxed mb-4">
+              整塔从基础到刹顶，全部木构件仅靠榫卯连接，不用一颗铁钉。榫卯连接具有一定的转动自由度，在地震荷载下可通过构件之间的微小相对位移消耗能量，表现出类似现代"消能减震"装置的特性。这种柔性结构使木塔在强震下"摇而不倒"，是古代工匠对木材材性深刻理解的结晶。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-mu/10 text-mu rounded-full text-xs">柔性抗震</span>
+              <span class="px-3 py-1 bg-mu/10 text-mu rounded-full text-xs">自复位能力</span>
+              <span class="px-3 py-1 bg-mu/10 text-mu rounded-full text-xs">零铁钉构造</span>
+              <span class="px-3 py-1 bg-mu/10 text-mu rounded-full text-xs">可拆卸维修</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-mu/15 shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-jin/10 to-jin/5 px-6 py-4 border-b border-jin/10">
+            <h3 class="font-song text-lg font-bold text-mu flex items-center gap-2">
+              <i class="fa fa-arrows-alt text-jin"></i>
+              双筒结构承重
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-mo/75 text-sm leading-relaxed mb-4">
+              内外两圈柱网构成"双筒"结构体系，内筒承担竖向荷载，外筒承担水平荷载（风力、地震）。两圈柱之间以梁枋、斗拱相连，形成空间刚架。这一结构原理与现代高层建筑的"框筒"结构有异曲同工之妙，是辽代木构力学智慧的集中体现。
+            </p>
+            <div class="bg-mo/5 rounded-xl p-4">
+              <p class="text-mo/60 text-xs mb-2 font-bold">抗震数据：</p>
+              <p class="text-mo/70 text-sm">据史料记载，应县木塔自建成以来经历了数十次大大小小的地震，其中包括1626年山西大地震（推算约7级），塔体震而不倒；近现代监测显示塔身已有1.98度整体北倾，但结构未见崩溃性破坏。</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-mu/15 shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-mu/10 to-jin/5 px-6 py-4 border-b border-mu/10">
+            <h3 class="font-song text-lg font-bold text-mu flex items-center gap-2">
+              <i class="fa fa-paint-brush text-jin"></i>
+              彩塑与壁画
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-mo/75 text-sm leading-relaxed mb-4">
+              塔内各层均供奉佛像，底层正中为一尊高11米的释迦牟尼坐像，是辽代彩塑的精品。各层梁枋上绘有辽代壁画，内容以佛教故事、飞天、供养人为主，色彩虽历经近千年仍部分清晰可辨，是研究辽代绘画艺术的珍贵实物资料。
+            </p>
+            <div class="grid grid-cols-3 gap-4 mt-4 text-center">
+              <div class="bg-mu/5 rounded-xl p-3">
+                <div class="text-jin font-bold font-song text-lg">11m</div>
+                <div class="text-mo/60 text-xs mt-1">底层佛像高度</div>
+              </div>
+              <div class="bg-mu/5 rounded-xl p-3">
+                <div class="text-jin font-bold font-song text-lg">26尊</div>
+                <div class="text-mo/60 text-xs mt-1">塔内彩塑总数</div>
+              </div>
+              <div class="bg-mu/5 rounded-xl p-3">
+                <div class="text-jin font-bold font-song text-lg">辽代</div>
+                <div class="text-mo/60 text-xs mt-1">壁画年代</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 历史价值 -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-1 h-8 bg-jin rounded-full"></div>
+        <h2 id="历史价值" class="font-song text-2xl md:text-3xl font-bold text-mu">历史价值与保护</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gradient-to-br from-mu/8 to-jin/5 rounded-2xl border-2 border-mu/15 shadow-lg p-6">
+          <h3 class="font-song text-lg font-bold text-mu mb-4 flex items-center gap-2">
+            <i class="fa fa-star text-jin"></i>
+            学术研究价值
+          </h3>
+          <ul class="space-y-3 text-mo/75 text-sm">
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>世界现存最高、最古老纯木构楼阁塔</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>斗拱种类最多的单体古建筑（54种）</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>研究辽代木构技术的第一手实物</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>1933年梁思成考察后向世界公布</li>
+            <li class="flex gap-2"><span class="text-jin mt-1"><i class="fa fa-check-circle"></i></span>吉尼斯世界纪录认证保存最完好木塔</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-jin/8 to-mu/5 rounded-2xl border-2 border-jin/15 shadow-lg p-6">
+          <h3 class="font-song text-lg font-bold text-mu mb-4 flex items-center gap-2">
+            <i class="fa fa-shield text-jin"></i>
+            保护现状与挑战
+          </h3>
+          <ul class="space-y-3 text-mo/75 text-sm">
+            <li class="flex gap-2"><span class="text-mu mt-1"><i class="fa fa-flag"></i></span>1961年列入第一批全国重点文物保护单位</li>
+            <li class="flex gap-2"><span class="text-mu mt-1"><i class="fa fa-flag"></i></span>塔体已出现约1.98°整体倾斜</li>
+            <li class="flex gap-2"><span class="text-mu mt-1"><i class="fa fa-flag"></i></span>二层斗拱局部已有压扁变形</li>
+            <li class="flex gap-2"><span class="text-mu mt-1"><i class="fa fa-flag"></i></span>2016年国家启动修缮保护专项研究</li>
+            <li class="flex gap-2"><span class="text-mu mt-1"><i class="fa fa-flag"></i></span>目前仅限首层对外开放参观</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 底部引言 -->
+  <section class="bg-gradient-to-r from-mu/5 via-jin/5 to-mu/5 border-t border-b border-jin/20 py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="font-song text-xl text-mo/70 italic">
+        <span class="text-jin text-3xl align-middle leading-none">「</span>
+        &thinsp;未登应县塔，不见北国天&thinsp;
+        <span class="text-jin text-3xl align-middle leading-none">」</span>
+      </p>
+      <p class="text-mo/40 text-sm mt-2 tracking-widest">— 民间谚语 · 世界最高古木塔</p>
+    </div>
+  </section>
+
+  <!-- 底部返回导航 -->
+  <section class="py-10">
+    <div class="container mx-auto px-4 text-center">
+      <a href="zongjiao.html" class="inline-flex items-center gap-2 px-6 py-3 bg-mu text-white font-bold rounded-full hover:bg-mu/90 transition-colors shadow-lg">
+        <i class="fa fa-arrow-left"></i>
+        返回宗教建筑总览
+      </a>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-mo text-white/60 py-6 text-center text-sm border-t-4 border-jin/30">
+    <p>华夏营造可视化平台 · 华夏建筑文化数字保护与传播</p>
+  </footer>
+
+</body>
+</html>

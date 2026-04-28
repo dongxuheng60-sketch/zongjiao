@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>搜索结果 | 华夏营造可视化平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F8F5EE',
+            zi: '#9D65C9',
+            jin: '#D4AF37',
+            mo: '#2D2A24',
+          },
+          fontFamily: {
+            song: ['"Source Han Serif SC"', '"Noto Serif SC"', 'serif'],
+            hei: ['"Source Han Sans SC"', '"Noto Sans SC"', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F8F5EE;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232D2A24' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .result-card {
+      animation: fadeSlideIn 0.4s ease-out forwards;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="bg-paper font-hei text-mo min-h-screen">
+
+  <!-- 导航栏 -->
+  <nav class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b-2 border-jin/20">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="font-song text-2xl md:text-3xl font-bold text-zi">
+        <a href="zongjiao.html" class="hover:text-jin transition-colors">华夏营造</a>
+      </div>
+      <div class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-zi transition-colors">首页</a>
+        <a href="lizhi.html" class="hover:text-zi transition-colors">礼制建筑</a>
+        <a href="juzhu.html" class="hover:text-zi transition-colors">居住建筑</a>
+        <a href="yuanlin.html" class="hover:text-zi transition-colors">园林建筑</a>
+        <a href="fangyu.html" class="hover:text-zi transition-colors">防御建筑</a>
+        <a href="zongjiao.html" class="text-jin font-bold">宗教建筑</a>
+        <a href="baoshi.html" class="hover:text-zi transition-colors">报时建筑</a>
+      </div>
+      <button class="md:hidden text-zi text-xl"><i class="fa fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- 搜索标题区 -->
+  <section class="bg-gradient-to-b from-zi/10 to-paper py-12">
+    <div class="container mx-auto px-4 text-center">
+      <div class="flex items-center justify-center gap-3 mb-2">
+        <i class="fa fa-search text-zi text-2xl"></i>
+        <h1 class="font-song text-3xl md:text-4xl font-bold text-zi">搜索结果</h1>
+      </div>
+      <p class="text-mo/50 text-sm mb-6">
+        关键词：<span id="displayKw" class="text-red-500 font-bold"></span>
+        &nbsp;·&nbsp; 找到 <span id="count" class="text-jin font-bold">0</span> 条结果
+      </p>
+      <div class="w-16 h-1 bg-zi mx-auto rounded-full"></div>
+    </div>
+  </section>
+
+  <!-- 内联搜索框（支持连续搜索） -->
+  <section class="container mx-auto px-4 -mt-2 mb-8">
+    <div class="max-w-xl mx-auto">
+      <form id="searchForm" class="flex items-center bg-white border-2 border-zi/20 rounded-full shadow-lg overflow-hidden focus-within:border-zi/50 transition-colors">
+        <input
+          id="searchInput"
+          type="text"
+          name="kw"
+          placeholder="换个关键词继续搜索..."
+          class="flex-1 px-5 py-3 text-sm outline-none bg-transparent"
+        >
+        <button
+          type="submit"
+          class="m-1.5 px-5 py-2 bg-zi text-white text-sm font-bold rounded-full hover:bg-zi/90 transition-colors flex items-center gap-2"
+        >
+          <i class="fa fa-search"></i> 搜索
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 返回主页快捷入口 -->
+  <section class="container mx-auto px-4 mb-4">
+    <a href="zongjiao.html" class="inline-flex items-center gap-2 text-mo/50 hover:text-zi text-sm transition-colors">
+      <i class="fa fa-arrow-left"></i> 返回宗教建筑总览
+    </a>
+  </section>
+
+  <!-- 结果区 -->
+  <section class="container mx-auto px-4 pb-20">
+    <div id="result" class="space-y-4"></div>
+    <!-- 空结果提示 -->
+    <div id="emptyMsg" class="hidden text-center py-16">
+      <i class="fa fa-search text-6xl text-zi/20 mb-4"></i>
+      <p class="text-mo/50 text-lg">没有找到相关内容</p>
+      <p class="text-mo/30 text-sm mt-2">试试其他关键词，如"嵩岳寺""佛光寺""木塔"</p>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-mo text-white/60 py-6 text-center text-sm border-t-4 border-jin/30">
+    <p>华夏营造可视化平台 · 华夏建筑文化数字保护与传播</p>
+  </footer>
+
+<script>
+(function() {
+  // 读取 URL 中的关键词
+  const params = new URLSearchParams(window.location.search);
+  const keyword = params.get('kw') || '';
+  const displayEl = document.getElementById('displayKw');
+  const inputEl  = document.getElementById('searchInput');
+  const countEl  = document.getElementById('count');
+
+  displayEl.textContent = keyword;
+  inputEl.value = keyword;  // 把当前关键词填回搜索框，方便连续搜索
+
+  // 发起搜索
+  fetch('data.json')
+    .then(res => res.json())
+    .then(data => {
+      let html = '';
+      let matchCount = 0;
+
+      data.forEach((item, idx) => {
+        const titleMatch   = item.title.includes(keyword);
+        const contentMatch = item.content.includes(keyword);
+        if (!titleMatch && !contentMatch) return;
+        matchCount++;
+
+        // 高亮关键词（忽略大小写）
+        function highlight(text) {
+          if (!keyword) return text;
+          const re = new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+          return text.replace(re, m => `<mark class="bg-yellow-200 text-red-600 rounded px-0.5">${m}</mark>`);
+        }
+
+        // 截取包含关键词的内容片段
+        let snippet = item.content;
+        if (!titleMatch) {
+          const pos = item.content.indexOf(keyword);
+          const start = Math.max(0, pos - 30);
+          const end   = Math.min(item.content.length, pos + keyword.length + 90);
+          snippet = (start > 0 ? '…' : '') + item.content.slice(start, end) + (end < item.content.length ? '…' : '');
+        } else {
+          snippet = item.content.slice(0, 120) + (item.content.length > 120 ? '…' : '');
+        }
+
+        html += `
+          <div class="result-card bg-white rounded-xl border-2 border-zi/10 shadow-sm hover:shadow-md hover:border-zi/30 transition-all p-6"
+               style="animation-delay: ${idx * 0.07}s">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-1">
+                <h3 class="font-song text-lg font-bold text-zi mb-2">
+                  ${highlight(item.title)}
+                </h3>
+                <p class="text-mo/65 text-sm leading-relaxed">
+                  ${highlight(snippet)}
+                </p>
+              </div>
+              <div class="flex-shrink-0">
+                <a href="https://www.baidu.com/s?wd=${encodeURIComponent(item.title + ' 古建筑 建筑结构')}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-3 py-1.5 bg-zi/10 text-zi text-xs font-bold rounded-full hover:bg-zi/20 transition-colors">
+                  <i class="fa fa-external-link"></i> 查看详情
+                </a>
+              </div>
+            </div>
+          </div>`;
+      });
+
+      countEl.textContent = matchCount;
+
+      // 如果有结果，底部加一条"去百度深度搜索"的提示
+      if (matchCount > 0) {
+        html += `
+          <div class="mt-6 text-center">
+            <a href="https://www.baidu.com/s?wd=${encodeURIComponent(keyword + ' 古建筑 建筑结构 文物')}" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-zi to-jin text-white rounded-full font-bold shadow-lg hover:shadow-xl transition-all">
+              <i class="fa fa-external-link"></i>
+              在百度深度搜索「${keyword}」
+            </a>
+          </div>`;
+      }
+
+      const resultEl  = document.getElementById('result');
+      const emptyEl   = document.getElementById('emptyMsg');
+
+      if (matchCount === 0) {
+        resultEl.innerHTML = '';
+        emptyEl.classList.remove('hidden');
+        // 空结果时，替换提示文字，加百度直达链接
+        emptyEl.innerHTML = `
+          <i class="fa fa-search text-6xl text-zi/20 mb-4"></i>
+          <p class="text-mo/50 text-lg mb-2">本地数据库暂无「${keyword}」相关记录</p>
+          <a href="https://www.baidu.com/s?wd=${encodeURIComponent(keyword + ' 古建筑')}" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-gradient-to-r from-zi to-jin text-white rounded-full font-bold shadow-lg hover:shadow-xl transition-all">
+            <i class="fa fa-external-link"></i>
+            去百度搜索「${keyword}」
+          </a>`;
+      } else {
+        emptyEl.classList.add('hidden');
+        resultEl.innerHTML = html;
+      }
+    })
+    .catch(() => {
+      document.getElementById('result').innerHTML =
+        '<p class="text-center text-red-400 py-10">加载数据失败，请稍后重试。</p>';
+    });
+})();
+</script>
+
+</body>
+</html>
